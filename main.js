@@ -10,11 +10,11 @@ const modalMessage = document.getElementById("modal-message")
 for (let glyph of likeGlyphs) {
   glyph.addEventListener("click", function(e) {
 
-    if (glyph.innerText === EMPTY_HEART) {
+    if (e.target.innerText === EMPTY_HEART) {
     mimicServerCall("http://localhost:3000/dogs")
       .then(function(object) {
-       glyph.innerText = FULL_HEART
-       glyph.classList.add('activated-heart')
+       e.target.innerText = FULL_HEART
+       e.target.classList.add('activated-heart')
       })
       .catch(function(error) {
         modal.classList.remove('hidden')
@@ -25,9 +25,9 @@ for (let glyph of likeGlyphs) {
         modal.classList.add('hidden')
       }
     }
-    else if (glyph.innerText === FULL_HEART) {
-      glyph.innerText = EMPTY_HEART;
-      glyph.classList.remove('activated-heart')
+    else if (e.target.innerText === FULL_HEART) {
+      e.target.innerText = EMPTY_HEART;
+      e.target.classList.remove('activated-heart')
     }
   })
 }
