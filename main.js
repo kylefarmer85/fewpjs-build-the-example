@@ -1,8 +1,58 @@
 // Defining text characters for the empty and full hearts for you to use later.
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
-
 // Your JavaScript code goes here!
+
+const likeGlyphs = document.querySelectorAll('.like-glyph')
+const modal = document.getElementById('modal')
+const modalMessage = document.getElementById("modal-message")
+
+for (let glyph of likeGlyphs) {
+  glyph.addEventListener("click", function(e) {
+
+    if (glyph.innerText = EMPTY_HEART) {
+    mimicServerCall("http://localhost:3000/dogs")
+      .then(function(object) {
+       glyph.innerText = FULL_HEART
+       glyph.classList.add('activated-heart')
+      })
+      .catch(function(error) {
+        modal.classList.remove('hidden')
+        modalMessage.innerText = error
+        setTimeout(addHidden, 5000)
+      })
+      function addHidden() {
+        modal.classList.add('hidden')
+      }
+    }
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
